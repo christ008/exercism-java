@@ -1,17 +1,27 @@
 public class JedliksToyCar {
+    int battery = 100;
+    int distanceDriven = 0;
+
     public static JedliksToyCar buy() {
-        throw new UnsupportedOperationException("Please implement the (static) JedliksToyCar.buy()  method");
+        return new JedliksToyCar();
     }
 
     public String distanceDisplay() {
-        throw new UnsupportedOperationException("Please implement the JedliksToyCar.distanceDisplay()  method");
+        return "Driven " + distanceDriven + " meters";
     }
 
     public String batteryDisplay() {
-        throw new UnsupportedOperationException("Please implement the JedliksToyCar.batteryDisplay()  method");
+        if (battery == 0) {
+            return "Battery empty";
+        } else {
+            return "Battery at " + battery + "%";
+        }
     }
-
+    
     public void drive() {
-        throw new UnsupportedOperationException("Please implement the JedliksToyCar.drive()  method");
+        if (battery > 0) {
+            distanceDriven += 20;
+            battery -= 1;
+        }
     }
 }

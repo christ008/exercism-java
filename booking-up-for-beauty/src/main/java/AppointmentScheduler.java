@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 class AppointmentScheduler {
@@ -15,7 +14,7 @@ class AppointmentScheduler {
 
     public boolean isAfternoonAppointment(LocalDateTime appointmentDate) {
         var time = appointmentDate.toLocalTime();
-        return !time.isBefore(LocalTime.NOON) && time.isBefore(LocalTime.NOON.plusHours(6));
+        return time.getHour() >= 12 && time.getHour() < 18;
     }
 
     public String getDescription(LocalDateTime appointmentDate) {

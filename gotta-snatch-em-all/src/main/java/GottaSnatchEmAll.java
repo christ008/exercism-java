@@ -13,9 +13,11 @@ class GottaSnatchEmAll {
     }
 
     static boolean canTrade(Set<String> myCollection, Set<String> theirCollection) {
-        for (String myCard : myCollection) {
-            if (!theirCollection.contains(myCard) && !myCollection.containsAll(theirCollection)) {
-                return true;
+        if (!myCollection.containsAll(theirCollection)) {
+            for (String myCard : myCollection) {
+                if (!theirCollection.contains(myCard)) {
+                    return true;
+                }
             }
         }
         return false;

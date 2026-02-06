@@ -18,10 +18,8 @@ public class DialingCodes {
     }
 
     public void addNewDialingCode(Integer code, String country) {
-        if (!dialingCodes.containsKey(code)) {
-            if (!dialingCodes.containsValue(country)) {
-                dialingCodes.put(code, country);
-            }
+        if (!dialingCodes.containsKey(code) && !dialingCodes.containsValue(country)) {
+            setDialingCode(code, country);
         }
     }
 
@@ -35,11 +33,10 @@ public class DialingCodes {
     }
 
     public void updateCountryDialingCode(Integer code, String country) {
-        for (var entry : dialingCodes.entrySet()) {
-            if (entry.getValue().equals(country)) {
-                dialingCodes.remove(entry.getKey());
-                dialingCodes.put(code, country);
-            }
+        var oldCode = findDialingCode(country);
+        if (oldCode != null) {
+            dialingCodes.remove(oldCode);
+            dialingCodes.put(code, country);
         }
     }
 }
